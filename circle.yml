@@ -18,12 +18,12 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - build
+      - build:
         filters:
           branches:
             only:
               - master
-      - test
+      - test:
         filters:
           requires:
             -build
