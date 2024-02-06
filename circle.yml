@@ -1,17 +1,18 @@
 version: 2.1
 
-jobs :
+jobs:
   build:
     docker:
-      -image : cimg/openjdk:21.0.2-node
+      - image: cimg/openjdk:21.0.2
     steps:
       - checkout
       - run: java --version
-      - run: node --version
   test:
-      steps :
-        - checkout
-        - run : mvn test
+    docker:
+      - image: cimg/openjdk:21.0.2-node
+    steps :
+      - checkout
+      - run : mvn test
 
 
 workflows:
