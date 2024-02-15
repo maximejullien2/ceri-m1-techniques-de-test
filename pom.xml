@@ -11,6 +11,7 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 	<name>Pokedex-Maxime</name>
 	<url> http://univ-avignon.fr </url>
 	<build>
+		<testSourceDirectory>src/test/java/</testSourceDirectory>
 		<plugins>
 			<plugin>
     			<groupId>org.apache.maven.plugins</groupId>
@@ -25,7 +26,15 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 	<dependencies>
 		<dependency>
