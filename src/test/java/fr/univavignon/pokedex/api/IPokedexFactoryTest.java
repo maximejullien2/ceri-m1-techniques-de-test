@@ -19,7 +19,6 @@ class IPokedexFactoryTest {
         this.iPokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
         this.iPokemonFactory = Mockito.mock(IPokemonFactory.class);
         when(this.iPokedexFactory.createPokedex(this.iPokemonMetadataProvider,this.iPokemonFactory)).thenReturn(Mockito.mock(IPokedex.class));
-
     }
 
 
@@ -27,6 +26,5 @@ class IPokedexFactoryTest {
     void createPokedexTest() {
         IPokedex iPokedex = this.iPokedexFactory.createPokedex(this.iPokemonMetadataProvider,this.iPokemonFactory);
         assertTrue(iPokedex instanceof IPokedex);
-        Mockito.verify(this.iPokedexFactory.createPokedex(this.iPokemonMetadataProvider,this.iPokemonFactory));
     }
 }
