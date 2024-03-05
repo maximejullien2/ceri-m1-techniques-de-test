@@ -11,9 +11,9 @@ jobs:
     steps :
       - checkout
       - run : mvn test
-      - codecov/upload
       - store_artifacts:
           path: target
+      - codecov/upload
 
 workflows:
   build_and_test:
