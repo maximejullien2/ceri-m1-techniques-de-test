@@ -1,6 +1,12 @@
 version: 2.1
 
 jobs:
+  upload-to-codecov:
+    docker:
+      - image: cimg/openjdk:21.0.2-node
+      steps:
+        - checkout
+        - codecov/upload
   test:
     docker:
       - image: cimg/openjdk:21.0.2-node
@@ -10,7 +16,6 @@ jobs:
 
 orbs:
   codecov: codecov/codecov@4.0.1
-
 workflows:
   build_and_test:
     jobs:
@@ -19,7 +24,6 @@ workflows:
           branches:
             only:
               - master
-  upload-to-codecov:
+  upload:
     jobs:
-      - checkout
-      - codecov/upload
+      - upload-to-codecov
