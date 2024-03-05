@@ -18,7 +18,6 @@ class IPokemonMetadataProviderTest {
     @BeforeEach
     public void setUp() throws PokedexException {
         this.iPokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-        when(iPokemonMetadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0,"Bulbizarre",126,126,90));
         when(iPokemonMetadataProvider.getPokemonMetadata(anyInt())).thenAnswer(
                 new Answer() {
                     public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
