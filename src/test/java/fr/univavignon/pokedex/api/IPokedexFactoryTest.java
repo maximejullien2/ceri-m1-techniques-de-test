@@ -25,6 +25,6 @@ class IPokedexFactoryTest {
     @Test
     void createPokedexTest() {
         IPokedex iPokedex = this.iPokedexFactory.createPokedex(this.iPokemonMetadataProvider,this.iPokemonFactory);
-        assertTrue(iPokedex instanceof IPokedex);
+        assertInstanceOf(IPokedex.class,iPokedex);
     }
 }

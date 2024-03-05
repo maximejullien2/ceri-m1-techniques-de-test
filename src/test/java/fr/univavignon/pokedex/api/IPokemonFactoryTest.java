@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.mockito.Mockito.when;
 
 class IPokemonFactoryTest {
@@ -21,8 +22,8 @@ class IPokemonFactoryTest {
     void createPokemonTest() {
         Pokemon pokemonAquali = iPokemonFactory.createPokemon(133,2729,202,5000,4);
         Pokemon pokemonBulbizarre = iPokemonFactory.createPokemon(0,613,64,4000,4);
-        assertTrue(pokemonAquali instanceof Pokemon);
-        assertTrue(pokemonBulbizarre instanceof Pokemon);
+        assertInstanceOf(Pokemon.class,pokemonAquali);
+        assertInstanceOf(Pokemon.class,pokemonBulbizarre);
         assertEquals(0,pokemonBulbizarre.getIndex());
         assertEquals(133,pokemonAquali.getIndex());
         assertEquals("Bulbizarre",pokemonBulbizarre.getName());

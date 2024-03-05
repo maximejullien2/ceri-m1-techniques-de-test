@@ -46,6 +46,8 @@ class IPokemonMetadataProviderTest {
         assertThrows(PokedexException.class,()->{this.iPokemonMetadataProvider.getPokemonMetadata(155);});
         PokemonMetadata pokemonMetadataAquali = iPokemonMetadataProvider.getPokemonMetadata(133);
         PokemonMetadata pokemonMetadataBulbizarre = iPokemonMetadataProvider.getPokemonMetadata(0);
+        assertInstanceOf(PokemonMetadata.class,pokemonMetadataAquali);
+        assertInstanceOf(PokemonMetadata.class,pokemonMetadataBulbizarre);
         assertEquals(0,pokemonMetadataBulbizarre.getIndex());
         assertEquals(133,pokemonMetadataAquali.getIndex());
         assertEquals("Bulbizarre",pokemonMetadataBulbizarre.getName());
