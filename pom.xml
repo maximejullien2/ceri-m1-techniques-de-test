@@ -88,5 +88,10 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 			<artifactId>commons-collections4</artifactId>
 			<version>4.3</version>
 		</dependency>
+		<dependency>
+			<groupId>com.puppycrawl.tools</groupId>
+			<artifactId>checkstyle</artifactId>
+			<version>10.14.1</version>
+		</dependency>
 	</dependencies>
 </project>
