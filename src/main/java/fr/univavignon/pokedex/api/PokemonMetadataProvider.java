@@ -17,11 +17,10 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
         if(0 > index || index > 150){
             throw new PokedexException("Index qui dépasse les limites du Pokedex");
         }
-        if (index ==0){
-            return new PokemonMetadata(0,"Bulbizarre",126,126,90);
-        }
-        if(index == 133){
-            return new PokemonMetadata(133,"Aquali",186,168,260);
+        for(int i=0 ; i<metadataPokemonArrayList.size();i++){
+            if(metadataPokemonArrayList.get(i).getIndex()==index){
+                return metadataPokemonArrayList.get(i);
+            }
         }
         throw new PokedexException("Pokemon inexistant dans le Pokedex");
     }
