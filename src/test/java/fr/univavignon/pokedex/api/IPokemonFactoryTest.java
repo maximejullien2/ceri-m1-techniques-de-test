@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.mockito.Mockito.when;
@@ -13,9 +15,11 @@ class IPokemonFactoryTest {
     IPokemonFactory iPokemonFactory;
     @BeforeEach
     public void setUp(){
-        this.iPokemonFactory = Mockito.mock(IPokemonFactory.class);
-        when(iPokemonFactory.createPokemon(0,613,64,4000,4)).thenReturn(new Pokemon(0,"Bulbizarre",126,126,90,613,64,4000,4,0.56));
-        when(iPokemonFactory.createPokemon(133,2729,202,5000,4)).thenReturn(new Pokemon(133,"Aquali",186,168,260,2729,202,5000,4,1.00));
+        ArrayList<PokemonMetadata> arrayList = new ArrayList<>();
+        arrayList.add(new PokemonMetadata(0,"Bulbizarre",126,126,90));
+        arrayList.add(new PokemonMetadata(133,"Aquali",186,168,260));
+        PokemonMetadataProvider pokemonMetadataProvider = new PokemonMetadataProvider(arrayList);
+        this.iPokemonFactory = new PokemonFactory(pokemonMetadataProvider);
     }
 
     @Test
