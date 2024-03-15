@@ -10,8 +10,7 @@ jobs:
       - image: cimg/openjdk:21.0.2-node
     steps :
       - checkout
-      - run : mvn clean verify
-      - run :  mvn test jacoco:restore-instrumented-classes jacoco:report@default-report.
+      - run :  mvn test
       - store_artifacts:
           path: target
       - codecov/upload
