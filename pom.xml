@@ -92,6 +92,9 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 			<groupId>com.puppycrawl.tools</groupId>
 			<artifactId>checkstyle</artifactId>
 			<version>10.14.1</version>
+			<configuration>
+				<configLocation>checkstyle.xml</configLocation>
+			</configuration>
 		</dependency>
 	</dependencies>
 </project>
