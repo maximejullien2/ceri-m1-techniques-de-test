@@ -7,6 +7,9 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -17,31 +20,14 @@ class IPokemonMetadataProviderTest {
     IPokemonMetadataProvider iPokemonMetadataProvider;
     @BeforeEach
     public void setUp() throws PokedexException {
-        this.iPokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-        when(iPokemonMetadataProvider.getPokemonMetadata(anyInt())).thenAnswer(
-                new Answer() {
-                    public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
-                        int arg = invocationOnMock.getArgument(0);
-                        if(arg < 0 || arg > 150){
-                            throw new PokedexException("Index "+Integer.toString(arg)+" is not valid");
-                        }
-                        else{
-                            if(arg==0){
-                                return new PokemonMetadata(0,"Bulbizarre",126,126,90);
-                            }
-                            else if (arg==133){
-                                return new PokemonMetadata(133,"Aquali",186,168,260);
-                            }
-                            return null;
-                        }
-                    }
-                }
-        );
+        List<PokemonMetadata> arrayList = new ArrayList<PokemonMetadata>();
+        arrayList.add(new PokemonMetadata(0,"Bulbizarre",126,126,90));
+        arrayList.add(new PokemonMetadata(133,"Aquali",186,168,260));
+        this.iPokemonMetadataProvider = new PokemonMetadataProvider(arrayList);
     }
 
     @Test
     void getPokemonMetadata() throws PokedexException {
-
         assertThrows(PokedexException.class,()->{this.iPokemonMetadataProvider.getPokemonMetadata(-1);});
         assertThrows(PokedexException.class,()->{this.iPokemonMetadataProvider.getPokemonMetadata(155);});
         PokemonMetadata pokemonMetadataAquali = iPokemonMetadataProvider.getPokemonMetadata(133);
