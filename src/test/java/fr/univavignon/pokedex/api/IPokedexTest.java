@@ -2,17 +2,13 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.when;
+
 
 class IPokedexTest {
 
@@ -234,4 +230,55 @@ class IPokedexTest {
         assertEquals(1.00,pokemonList.get(1).getIv());
     }
 
+
+    @Test
+    void createPokemonTest() throws PokedexException {
+        Pokemon pokemonAquali = this.iPokedex.createPokemon(133,2729,202,5000,4);
+        Pokemon pokemonBulbizarre = this.iPokedex.createPokemon(0,613,64,4000,4);
+        assertInstanceOf(Pokemon.class,pokemonAquali);
+        assertInstanceOf(Pokemon.class,pokemonBulbizarre);
+        assertEquals(0,pokemonBulbizarre.getIndex());
+        assertEquals(133,pokemonAquali.getIndex());
+        assertEquals("Bulbizarre",pokemonBulbizarre.getName());
+        assertEquals("Aquali",pokemonAquali.getName());
+        assertEquals(126,pokemonBulbizarre.getAttack());
+        assertEquals(186,pokemonAquali.getAttack());
+        assertEquals(126,pokemonBulbizarre.getDefense());
+        assertEquals(168,pokemonAquali.getDefense());
+        assertEquals(90,pokemonBulbizarre.getStamina());
+        assertEquals(260,pokemonAquali.getStamina());
+        assertEquals(613,pokemonBulbizarre.getCp());
+        assertEquals(2729,pokemonAquali.getCp());
+        assertEquals(64,pokemonBulbizarre.getHp());
+        assertEquals(202,pokemonAquali.getHp());
+        assertEquals(4000,pokemonBulbizarre.getDust());
+        assertEquals(5000,pokemonAquali.getDust());
+        assertEquals(4,pokemonBulbizarre.getCandy());
+        assertEquals(4,pokemonAquali.getCandy());
+        assertEquals(0,pokemonBulbizarre.getIv());
+        assertEquals(0,pokemonAquali.getIv());
+        assertThrows(PokedexException.class,()->{this.iPokedex.createPokemon(-1,100,120,130,5);});
+        assertThrows(PokedexException.class,()->{this.iPokedex.createPokemon(155,150,90,45,9);});
+    }
+
+    @Test
+    void getPokemonMetadata()throws PokedexException {
+        assertThrows(PokedexException.class,()->{this.iPokedex.getPokemonMetadata(-1);});
+        assertThrows(PokedexException.class,()->{this.iPokedex.getPokemonMetadata(155);});
+        assertThrows(PokedexException.class,()->{this.iPokedex.getPokemonMetadata(50);});
+        PokemonMetadata pokemonMetadataAquali = this.iPokedex.getPokemonMetadata(133);
+        PokemonMetadata pokemonMetadataBulbizarre = this.iPokedex.getPokemonMetadata(0);
+        assertInstanceOf(PokemonMetadata.class,pokemonMetadataAquali);
+        assertInstanceOf(PokemonMetadata.class,pokemonMetadataBulbizarre);
+        assertEquals(0,pokemonMetadataBulbizarre.getIndex());
+        assertEquals(133,pokemonMetadataAquali.getIndex());
+        assertEquals("Bulbizarre",pokemonMetadataBulbizarre.getName());
+        assertEquals("Aquali",pokemonMetadataAquali.getName());
+        assertEquals(126,pokemonMetadataBulbizarre.getAttack());
+        assertEquals(186,pokemonMetadataAquali.getAttack());
+        assertEquals(126,pokemonMetadataBulbizarre.getDefense());
+        assertEquals(168,pokemonMetadataAquali.getDefense());
+        assertEquals(90,pokemonMetadataBulbizarre.getStamina());
+        assertEquals(260,pokemonMetadataAquali.getStamina());
+    }
 }
