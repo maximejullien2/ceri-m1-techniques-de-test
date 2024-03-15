@@ -23,7 +23,7 @@ class IPokemonFactoryTest {
     }
 
     @Test
-    void createPokemonTest() {
+    void createPokemonTest() throws PokedexException {
         Pokemon pokemonAquali = iPokemonFactory.createPokemon(133,2729,202,5000,4);
         Pokemon pokemonBulbizarre = iPokemonFactory.createPokemon(0,613,64,4000,4);
         assertInstanceOf(Pokemon.class,pokemonAquali);
@@ -46,7 +46,9 @@ class IPokemonFactoryTest {
         assertEquals(5000,pokemonAquali.getDust());
         assertEquals(4,pokemonBulbizarre.getCandy());
         assertEquals(4,pokemonAquali.getCandy());
-        assertEquals(0.56,pokemonBulbizarre.getIv());
-        assertEquals(1.00,pokemonAquali.getIv());
+        assertEquals(0,pokemonBulbizarre.getIv());
+        assertEquals(0,pokemonAquali.getIv());
+        assertThrows(PokedexException.class,()->{iPokemonFactory.createPokemon(-1,100,120,130,5);});
+        assertThrows(PokedexException.class,()->{iPokemonFactory.createPokemon(155,150,90,45,9);});
     }
 }

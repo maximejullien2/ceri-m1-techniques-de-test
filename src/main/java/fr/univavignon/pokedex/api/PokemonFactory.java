@@ -8,14 +8,14 @@ public class PokemonFactory implements IPokemonFactory{
         this.pokemonMetadataProvider = pokemonMetadataProvider;
     }
 
+    //Les pokémons créer sont de niveaux 1 . Leur IV sera donc de 0.
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
-        if(index==0){
-            return new Pokemon(0,"Bulbizarre",126,126,90,613,64,4000,4,0.56);
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
+        try{
+            PokemonMetadata pokemonMetadata = pokemonMetadataProvider.getPokemonMetadata(index);
+            return new Pokemon(index,pokemonMetadata.getName(), pokemonMetadata.getAttack(), pokemonMetadata.getDefense(), pokemonMetadata.getStamina(), cp,hp,dust,candy,0);
+        } catch (PokedexException e) {
+            throw e;
         }
-        if (index ==133){
-            return new Pokemon(133,"Aquali",186,168,260,2729,202,5000,4,1.00);
-        }
-        return null;
     }
 }
