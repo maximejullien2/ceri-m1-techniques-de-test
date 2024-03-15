@@ -13,6 +13,10 @@ jobs:
       - run :  mvn test
       - store_artifacts:
           path: target
+      - store_test_results:
+          path: build/test-results
+      - store_artifacts:
+          path: build/reports/
       - codecov/upload
 
 workflows:
