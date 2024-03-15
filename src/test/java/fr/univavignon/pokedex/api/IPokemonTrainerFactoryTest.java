@@ -14,19 +14,16 @@ class IPokemonTrainerFactoryTest {
 
     IPokemonTrainerFactory iPokemonTrainerFactory;
     IPokedexFactory iPokedexFactory;
-    Pokemon bulbizarre = new Pokemon(0,"Bulbizarre",126,126,90,613,64,4000,4,0.56);
-    List<Pokemon> pokemonList = new ArrayList<Pokemon>();
     @BeforeEach
     public void setUp(){
-        this.iPokemonTrainerFactory = Mockito.mock(IPokemonTrainerFactory.class);
-        this.iPokedexFactory = Mockito.mock(IPokedexFactory.class);
-
-        IPokedex ipokedex = Mockito.mock(IPokedex.class);
-        when(ipokedex.getPokemons()).thenReturn(pokemonList);
-        when(ipokedex.size()).thenReturn(pokemonList.size());
-        when(ipokedex.addPokemon(bulbizarre)).thenReturn(pokemonList.size()-1);
-        when(this.iPokemonTrainerFactory.createTrainer("Test",Team.MYSTIC,iPokedexFactory)).thenReturn(new PokemonTrainer("Test",Team.MYSTIC,ipokedex));
-    }
+        List<PokemonMetadata> arrayList = new ArrayList<PokemonMetadata>();
+        arrayList.add(new PokemonMetadata(0,"Bulbizarre",126,126,90));
+        arrayList.add(new PokemonMetadata(133,"Aquali",186,168,260));
+        IPokemonMetadataProvider iPokemonMetadataProvider = new PokemonMetadataProvider(arrayList);
+        IPokemonFactory iPokemonFactory = new PokemonFactory(iPokemonMetadataProvider);
+        this.iPokemonTrainerFactory = new PokemonTrainerFactory(iPokemonMetadataProvider,iPokemonFactory);
+        this.iPokedexFactory = new PokedexFactory();
+        }
 
     @Test
     void createTrainerTest() {
