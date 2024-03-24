@@ -1,3 +1,4 @@
+<!DOCTYPE module PUBLIC>
 <module name="Checker">
     <module name="JavadocPackage"/>
     <module name="TreeWalker">
