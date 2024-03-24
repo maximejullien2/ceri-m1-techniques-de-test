@@ -12,7 +12,8 @@ jobs:
       - checkout
       - run : mvn clean site
       - run : mvn clean verify
-      - run : mvn test jacoco:restore-instrumented-classes jacoco:report@default-report
+      - run : mvn test
+      - run : mvn validate
       - store_artifacts:
           path: target
       - store_artifacts:
