@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run : mvn clean site
       - run : mvn clean verify
-      - run : mvn test jacoco:restore-instrumented-classes jacoco:report@default-report.
+      - run : mvn test jacoco:report@default-report.
       - store_artifacts:
           path: target
       - store_artifacts:
