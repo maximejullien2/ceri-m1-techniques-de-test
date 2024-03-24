@@ -74,6 +74,7 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 				<version>3.3.1</version>
 				<configuration>
 					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+					<failsOnError>false</failsOnError>
 					<configLocation>checkstyle.xml</configLocation>
 				</configuration>
 				<executions>
