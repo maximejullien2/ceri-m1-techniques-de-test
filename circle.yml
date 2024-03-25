@@ -25,8 +25,8 @@ jobs:
       - store_artifacts:
           path: target/site/apidocs
       - persist_to_workspace:
-          root: target/site/apidocs
-          paths: target/site/apidocs
+          root: target/site
+          paths: apidocs
 
   docs-deploy:
     docker:
@@ -37,7 +37,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: target/site/apidocs/
+          at: target/site
       - run:
           name: Install and configure dependencies
           command: |
