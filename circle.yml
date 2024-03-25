@@ -44,7 +44,7 @@ jobs:
             npm install gh-pages
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist target/site/apidocs
+          command: npm gh-pages --dist target/site/apidocs
       - add_ssh_keys:
           fingerprints:
             - "SHA256:RxLdmVa5e/ry0ejzLnkxDaqmKkUuK/+WNUK4kr/b04Q"
