@@ -17,7 +17,7 @@ jobs:
       - codecov/upload
   docs-build:
     docker:
-      - image
+      - image: cimg/openjdk:21.0.2-node
     steps:
       - checkout
       - run : mvn
@@ -43,11 +43,16 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - docs-build
-      - doc-deploy
       - test:
         filters:
           branches:
             only:
               - master
+      - docs-build:
+          requires:
+            -test
+      - doc-deploy:
+          requires:
+            - test
+            - docs-build
 
