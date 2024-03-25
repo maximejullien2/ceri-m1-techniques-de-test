@@ -15,6 +15,7 @@ jobs:
       - store_artifacts:
           path: target
       - codecov/upload
+
   docs-build:
     docker:
       - image: cimg/openjdk:21.0.2-node
@@ -23,6 +24,7 @@ jobs:
       - run : mvn
       - store_artifacts:
           path: target/site/apidocs
+
   docs-deploy:
     docker:
       - image: cimg/openjdk:21.0.2-node
@@ -49,10 +51,10 @@ workflows:
             only:
               - master
       - docs-build:
-          requires:
-            -test
+        requires:
+          - test
       - doc-deploy:
-          requires:
-            - test
-            - docs-build
+        requires:
+          - test
+          - docs-build
 
