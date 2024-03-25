@@ -43,13 +43,8 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - docs-build:
-          requires:
-            -test
-      - doc-deploy:
-        requires:
-          - test
-          - docs-build
+      - docs-build
+      - doc-deploy
       - test:
         filters:
           branches:
