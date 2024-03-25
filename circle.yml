@@ -51,15 +51,15 @@ workflows:
       - docs-build:
           requires:
             -test
-            filters:
-              branches:
-                only:
-                  - master
+          filters:
+            branches:
+              only:
+                - master
       - doc-deploy:
           requires:
             - test
             - docs-build
-            filters:
-              branches:
-                only: master
+          filters:
+            branches:
+              only: master
 
