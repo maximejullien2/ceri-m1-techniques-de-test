@@ -90,7 +90,7 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 				<version>1.0.0</version>
 				<executions>
 					<execution>
-						<id>badge</id>
+						<id>validate</id>
 						<phase>validate</phase>
 						<goals>
 							<goal>badges</goal>
@@ -100,6 +100,19 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 								<inputFile>target/checkstyle-result.xml</inputFile>
 							</inputFiles>
 						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.6.2</version>
+				<executions>
+					<execution>
+						<phase>site</phase>
+						<goals>
+							<goal>javadoc</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
