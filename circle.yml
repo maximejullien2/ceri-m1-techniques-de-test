@@ -27,7 +27,7 @@ jobs:
 
   docs-deploy:
     docker:
-      - image: cimg/openjdk:21.0.2-node
+      - image: node:8.10.0
     steps:
       - checkout
       - attach_workspace:
@@ -37,10 +37,10 @@ jobs:
           command: |
             npm install -g --silent gh-pages@2.0.1
             git config user.email "maxime.jullien2@alumni.univ-avignon.fr"
-            git config user.name "Maxime Jullien"
+            git config user.name "Jullien"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist docs/_build/html
+          command: gh-pages --dist target/site/apidocs
 
 workflows:
   build_and_test:
