@@ -90,12 +90,12 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 				<version>1.0.0</version>
 				<executions>
 					<execution>
-						<phase>post-site</phase>
+						<id>badge</id>
+						<phase>validate</phase>
 						<goals>
 							<goal>badges</goal>
 						</goals>
 						<configuration>
-							<outputDir>target/site/badges</outputDir>
 							<inputFiles>
 								<inputFile>target/checkstyle-result.xml</inputFile>
 							</inputFiles>
@@ -128,6 +128,10 @@ http://maven.apache.org/maven-v4_0_0.xsd"
 			<artifactId>checkstyle</artifactId>
 			<version>10.14.1</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.2.5</version>
+		</dependency>
 	</dependencies>
 </project>
