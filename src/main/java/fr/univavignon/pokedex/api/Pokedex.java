@@ -37,9 +37,7 @@ public class Pokedex implements IPokedex{
     }
 
     /**
-     * Returns the number of pokemon this pokedex contains.
-     *
-     * @return Number of pokemon in this pokedex.
+     * {@inheritDoc}
      */
     @Override
     public int size() {
@@ -48,11 +46,7 @@ public class Pokedex implements IPokedex{
 
 
     /**
-     * Adds the given <tt>pokemon</tt> to this pokedex and returns
-     * it unique index.
-     *
-     * @param pokemon Pokemon to add to this pokedex.
-     * @return Index of this pokemon relative to this pokedex.
+     * {@inheritDoc}
      */
     @Override
     public int addPokemon(Pokemon pokemon) {
@@ -61,11 +55,7 @@ public class Pokedex implements IPokedex{
     }
 
     /**
-     * Locates the pokemon identified by the given <tt>id</tt>.
-     *
-     * @param id Unique pokedex relative identifier.
-     * @return Pokemon denoted by the given identifier.
-     * @throws PokedexException If the given <tt>index</tt> is not valid.
+     * {@inheritDoc}
      */
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
@@ -78,9 +68,7 @@ public class Pokedex implements IPokedex{
     }
 
     /**
-     * Returns an unmodifiable list of all pokemons this pokedex contains.
-     *
-     * @return Unmodifiable list of all pokemons.
+     * {@inheritDoc}
      */
     @Override
     public List<Pokemon> getPokemons() {
@@ -88,11 +76,7 @@ public class Pokedex implements IPokedex{
     }
 
     /**
-     * Returns an unmodifiable list of all pokemons this pokedex contains.
-     * The list view will be sorted using the given <tt>order</tt>.
-     *
-     * @param order Comparator instance used for sorting the created view.
-     * @return Sorted unmodifiable list of all pokemons.
+     * {@inheritDoc}
      */
     @Override
     public List<Pokemon> getPokemons(Comparator<Pokemon> order) {
@@ -101,11 +85,13 @@ public class Pokedex implements IPokedex{
         return copie;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
         return iPokemonFactory.createPokemon(index,cp,hp,dust,candy);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
         return iPokemonMetadataProvider.getPokemonMetadata(index);
