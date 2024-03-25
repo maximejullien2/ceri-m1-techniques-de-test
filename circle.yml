@@ -49,7 +49,7 @@ workflows:
       - docs-build:
           requires:
             - test
-      - doc-deploy:
+      - docs-deploy:
           requires:
             - test
             - docs-build
