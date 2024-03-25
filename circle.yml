@@ -41,7 +41,7 @@ jobs:
             npm install need sudo
             git config user.email "test@alumni.univ-avignon.fr"
             git config user.name "jullien"
-            npm install -g gh-pages --save-dev
+            sudo npm install -g gh-pages --save-dev
       - add_ssh_keys:
           fingerprints:
             - "SHA256:RxLdmVa5e/ry0ejzLnkxDaqmKkUuK/+WNUK4kr/b04Q"
