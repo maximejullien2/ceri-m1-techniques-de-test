@@ -27,7 +27,7 @@ jobs:
 
   docs-deploy:
     docker:
-      - image: node:8.10.0
+      - image: cimg/openjdk:21.0.2-node
     steps:
       - checkout
       - attach_workspace:
