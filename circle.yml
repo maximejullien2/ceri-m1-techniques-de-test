@@ -41,11 +41,14 @@ jobs:
             npm install need sudo
             git config user.email "test@alumni.univ-avignon.fr"
             git config user.name "jullien"
-            npm install gh-pages
-            gh-pages --dist target/site/apidocs
+            npm install -g gh-pages --save-dev
       - add_ssh_keys:
           fingerprints:
             - "SHA256:RxLdmVa5e/ry0ejzLnkxDaqmKkUuK/+WNUK4kr/b04Q"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dist target/site/apidocs
+
 workflows:
   build_and_test:
     jobs:
