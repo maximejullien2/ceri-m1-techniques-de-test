@@ -24,6 +24,9 @@ jobs:
       - run : mvn site
       - store_artifacts:
           path: target/site/apidocs
+      - persist_to_workspace:
+          root: target/site/apidocs
+          paths: target/site/apidocs
 
   docs-deploy:
     docker:
