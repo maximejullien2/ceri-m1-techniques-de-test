@@ -45,16 +45,11 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - test:
-        filters:
-          branches:
-            only:
-              - master
+      - test
       - docs-build:
-        requires:
-          - test
+          requires:
+            - test
       - doc-deploy:
-        requires:
-          - test
-          - docs-build
-
+          requires:
+            - test
+            - docs-build
