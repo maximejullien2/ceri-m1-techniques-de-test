@@ -28,29 +28,6 @@ jobs:
           root: target/site
           paths: apidocs
 
-  docs-deploy:
-    docker:
-      - image: cimg/openjdk:21.0.2-node
-        environment:
-          NODE_OPTIONS=--max-old-space-size=4096
-    resource_class: large
-    steps:
-      - checkout
-      - attach_workspace:
-          at: target/site
-      - run:
-          name: Install and configure dependencies
-          command: |
-            npm install need sudo
-            git config user.email "test@alumni.univ-avignon.fr"
-            git config user.name "jullien"
-            sudo npm install -g gh-pages --save-dev
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:RxLdmVa5e/ry0ejzLnkxDaqmKkUuK/+WNUK4kr/b04Q"
-      - run:
-          name: Deploy docs to gh-pages branch
-          command: gh-pages --dist target/site/apidocs
 
 workflows:
   build_and_test:
@@ -59,7 +36,3 @@ workflows:
       - docs-build:
           requires:
             - test
-      - docs-deploy:
-          requires:
-            - test
-            - docs-build
