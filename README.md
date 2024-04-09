@@ -9,6 +9,7 @@ Pour la classe Pokedex :
 Pour la classe PokemonFactory : 
 - Il y aura une variable un IPokemonMetadataProvider lors de la creation de cette classe qui permettera de créer un Pokemon.
 - La fonction va utiliser le IPokemonMetadataProvider pour créer le Pokemon , s'y il n'existe pas il renverra une erreur.
+- On mettera son IV toujours à 0 lorsqu'on crée un Pokémon.
 
 Pour la classe PokemonMetadataProvider : 
 - Il y aura une variable une List de PokemonMetadata qui contiendra les PokemonMetadata de tous les pokemons.
